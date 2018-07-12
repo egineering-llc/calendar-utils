@@ -451,20 +451,7 @@ export function getWeekView({
       span: entry.span,
       startsBeforeWeek: entry.event.start < startOfViewWeek,
       endsAfterWeek: (entry.event.end || entry.event.start) > endOfViewWeek
-    }))
-    .sort((itemA, itemB): number => {
-      const startSecondsDiff: number = differenceInSeconds(
-        itemA.event.start,
-        itemB.event.start
-      );
-      if (startSecondsDiff === 0) {
-        return differenceInSeconds(
-          itemB.event.end || itemB.event.start,
-          itemA.event.end || itemA.event.start
-        );
-      }
-      return startSecondsDiff;
-    });
+    }));
 
   const eventRows: WeekViewEventRow[] = [];
   const allocatedEvents: WeekViewEvent[] = [];
